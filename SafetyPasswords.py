@@ -91,7 +91,7 @@ def password(len):
 root = Tk()
 root.title("SafetyPasswords")
 root.geometry("800x500")
-root.iconbitmap("C:/Users/SEBAS/Desktop/Python/SafetyPasswords/icon.ico")
+#root.iconbitmap("C:/Users/SEBAS/Desktop/Python/SafetyPasswords/icon.ico")
 Label(root, text="Generate a unhackeable password (ok, not at all :D)", font=('Helvetica', 14), fg="blue").grid(column=0, row=0)
 Label(root, text="Set the password lenght: ", font=('Helvetica', 10)).grid(column=0, row=1)
 user_len = Scale(root, from_= 1, to = 12, orient=HORIZONTAL)
