@@ -109,7 +109,8 @@ class Window():
 		self.mainbutton.grid(column=0, row=2)
 		self.password_label = Entry(self.root, borderwidth=0, width= 50,   bg="#f1f1f1")
 		self.password_label.grid(column=1, row=2)
-		
+
+#EntryPoint		
 
 if __name__ == '__main__':
 	Window(root)
