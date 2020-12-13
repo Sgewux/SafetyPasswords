@@ -99,7 +99,7 @@ def password(lenght):
 root = Tk()
 root.title("SafetyPasswords")
 root.geometry("800x500")
-#root.iconbitmap("C:/Users/SEBAS/Desktop/Python/SafetyPasswords/icon.ico")
+
 class Window():
 	"""Gui's window class"""
 	def __init__(self, root):
