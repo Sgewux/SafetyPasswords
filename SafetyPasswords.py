@@ -1,91 +1,96 @@
 #imports
 from tkinter import *
 from tkinter import messagebox
-from random import randint
+import random
 #letters
-letters = {
-	1: "a",
-	2: "b",
-	3: "c",
-	4: "d",
-	5: "e",
-	6: "f",
-	7: "g",
-	8: "h",
-	9: "i",
-	10: "j",
-	11: "k",
-	12: "l",
-	13: "m",
-	14: "n",
-	15: "o",
-	16: "p",
-	17: "q",
-	18: "r",
-	19: "s",
-	20: "t",
-	21: "u",
-	22: "v",
-	23: "w",
-	24: "x",
-	25: "y",
-	26: "z"
-}
+letters = [
+	 "a",
+	 "b",
+	 "c",
+	 "d",
+	 "e",
+	 "f",
+	 "g",
+	 "h",
+	 "i",
+	 "j",
+	 "k",
+	 "l",
+	 "m",
+	 "n",
+	 "o",
+	 "p",
+	 "q",
+	 "r",
+	 "s",
+	 "t",
+	 "u",
+	 "v",
+	 "w",
+	 "x",
+	 "y",
+	 "z"
+]
 #symbols
-symbols = {
-	1: "#",
-	2: "!",
-	3: "$",
-	4: "%",
-	5: "&",
-	6: "?"
-}
+symbols = [
+	 "#",
+	 "!",
+	 "$",
+	 "%",
+	 "&",
+     "?"
+]
 #numbers
-numbers = {
-	0: "0",
-	1: "1",
-	2: "2",
-	3: "3",
-	4: "4",
-	5: "5",
-	6: "6",
-	7: "7",
-	8: "8",
-	9: "9"
+numbers = [
+	 "0",
+	 "1",
+	 "2",
+	 "3",
+	 "4",
+	 "5",
+	 "6",
+	 "7",
+	 "8",
+	 "9"
 
-}
+]
 #functions
-def randomL():
-	random_leter = randint(1, 26)
-	return random_leter
+def generate():
+
+	x = []	
+	for i in range(4):
+
+		if i % 2 == 0:
+			x.append(random.choice(symbols))
+			x.append(random.choice(numbers))
+			x.append(random.choice(letters).upper())
+
+		else:
+			x.append(random.choice(symbols))
+			x.append(random.choice(numbers))
+			x.append(random.choice(letters))
+	random.shuffle(x)
+
+	return ''.join(x)
 
 
-def randomS():
-	random_symbol = randint(1, 6)
-	return random_symbol
 
-
-def randomN():
-	random_number = randint(0, 9)
-	return random_number
-
-
-def password(len):
+def password(lenght):
 	global password_label
 	
-	if len < 8:
-		question = messagebox.askyesno("Small Password", f"Your password lenght it's very short, we suggest to set a longer than 8 password\n Are you sure to use a {len} characters password?")
+	if lenght < 8:
+		question = messagebox.askyesno("Small Password", f"Your password lenght it's very short, we suggest to set a longer than 8 password\n Are you sure to use a {lenght} characters password?")
 		if question == 1:
-			contra = letters[randomL()] + symbols[randomS()] + letters[randomL()].upper() + numbers[randomN()] + symbols[randomS()] + letters[randomL()].upper() + numbers[randomN()] +letters[randomL()] + symbols[randomS()] + letters[randomL()].upper() + numbers[randomN()] +  symbols[randomS()]
+			contra = generate()
 			password_label = Entry(root, borderwidth=0, width= 50, bg="#f1f1f1")
-			password_label.insert(0, f"Your password is: {contra[0:len]}")
+			password_label.insert(0, f"Your password is: {contra[:lenght]}")
 			password_label.grid(column=1, row=2)
 		else:
 			messagebox.showinfo("Info", "Ok, lets try again")
-	elif len >= 8:
-		contra = letters[randomL()] + symbols[randomS()] + letters[randomL()].upper() + numbers[randomN()] + symbols[randomS()] + letters[randomL()].upper() + numbers[randomN()] +letters[randomL()] + symbols[randomS()] + letters[randomL()].upper() + numbers[randomN()] +  symbols[randomS()]
+	elif lenght >= 8:
+		contra = generate()
 		password_label = Entry(root, borderwidth=0, width= 50,   bg="#f1f1f1")
-		password_label.insert(0, f"Your password is: {contra[0:len]}")
+		password_label.insert(0, f"Your password is: {contra[:lenght]}")
 		password_label.grid(column=1, row=2)
 	#except:
 	#	messagebox.showerror("Error","Something happened, please try again")
